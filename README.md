@@ -16,6 +16,10 @@ It can also serve to maintain a virtual version of whatever is in production (to
 
 # Architecture
 
+![Architecture][arch.jpg]
+
+The beautiful image above needs explanation.
+
 # FAQ
 
 ## Why not Docker?
