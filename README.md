@@ -20,6 +20,16 @@ It can also serve to maintain a virtual version of whatever is in production (to
 
 The beautiful image above needs explanation.
 
+# Installation
+
+You need network access
+
+You will need QEMU. On a Debian based distribution you can do:
+
+`apt-get install qemu`
+
+http://releases.ubuntu.com/16.04/ubuntu-16.04.3-server-amd64.iso
+
 # FAQ
 
 ## Why not Docker?
