@@ -6,6 +6,12 @@ This allows to test different architectures, components and policies.
 
 It can also serve to maintain a virtual version of whatever is in production (to test stuff, document, ...)
 
+# Requirements
+
+- An OS that can run QEMU
+- 12 GB of memory
+- ~30 GB of free disk space
+
 # Used components
 
 - A Debian based Linux
