@@ -66,6 +66,8 @@ qemu-img create test.img 1G
 
 qemu-system-x86_64 -cdrom auto.iso -m 1G  -hda test.img
 
+qemu-system-x86_64 -m 1G -drive file=test.img,format=raw -vnc :1
+
 ```
 
 https://help.ubuntu.com/lts/installation-guide/i386/apb.html
