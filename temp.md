@@ -29,12 +29,17 @@ cp -rT iso iso2
 
 
 
+chmod u+w iso2/boot/grub
+chmod u+w iso2/boot/grub/grub.cfg
+
 chmod u+w iso2/isolinux
+chmod u+w iso2/isolinux/isolinux.cfg
 chmod u+w iso2/isolinux/txt.cfg
 chmod a+w iso2/isolinux/isolinux.bin
 
 chmod u+w iso2/boot
 
+cp isolinux.cfg iso2/isolinux/isolinux.cfg
 cp txt.cfg iso2/isolinux/txt.cfg
 cp preseed.cfg iso2/boot
 
