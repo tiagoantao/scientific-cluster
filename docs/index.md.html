@@ -1,0 +1,46 @@
+**Scientific cluster**
+
+Introduction
+============
+
+`Scientific cluster` provides a virtual simulation on a cluster based on
+[LUSTRE](http://lustre.org) (a open-source parallel file system used in HPC) and [SLURM](https://slurm.schedmd.com) (a open-source fault-tolerant cluster
+management system). This is arguably the most common architecture used in
+scientific computer clusters.
+
+The virtual simulation runs on top of [QEMU](http://www.qemu.org).
+
+The main purpose of this package is to allow administrators of scientific
+clusters to test different configurations before deployment.
+
+In the near future we will also support [Singularity](http://singularity.lbl.gov/index.html) (A user managed container system allowing the deployment of
+complex workloads on a cluster).
+
+There might be other components included (for example, OpenLDAP and NFS).
+
+Requirements
+============
+
+- An OS that can run QEMU. This was tested on Linux as a host
+  environment.  We suspect that it will almost "out of the box" on a
+  Mac and it will need some work on Windows
+- 12 GB of memory
+- ~30 GB of free disk space
+- root access
+
+
+Example configuration
+=====================
+
+
+(add bioconda also)
+
+Contact
+=======
+
+
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+
+<script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script>
+
+<script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>
