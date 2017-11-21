@@ -1,0 +1,39 @@
+digraph G {
+    subgraph cluster_support {
+        style=filled;
+        color=lightgrey;
+        node [style=filled,color=white];
+        LDAP;
+        DNS;
+	DHCP;
+	DNS -> DHCP;
+        label = "Support";
+    }
+
+    subgraph cluster_core {
+        color=lightgrey;
+        node [style=filled];
+        "S head / L client";
+	"NFS export / L client";
+        "S CPU / L master / L client";
+	"S CPU / L object / L client";
+	"S CPU / L client / Standard";
+	"S CPU / L client / High mem";
+	"S CPU / L client / GPU";
+	color=blue;
+        label = "Core";
+    }
+
+    subgraph cluster_pi {
+        color=lightgrey;
+        node [style=filled];
+	"S CPU / L client / PI disk";
+	"S Head / NFS import"
+
+        label = "Researcher";
+    }
+
+
+   "NFS export / L client" -> "S Head / NFS import";
+   LDAP -> "S Head / NFS import";
+}
