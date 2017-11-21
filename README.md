@@ -11,8 +11,11 @@ production (to test stuff, document, ...)
 # Requirements
 
 - An OS that can run QEMU
+- QEMU
 - 12 GB of memory
 - ~30 GB of free disk space
+- sshpass
+- bash
 - root access
 
 # Used components
