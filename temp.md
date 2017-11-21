@@ -50,7 +50,7 @@ qemu-img create test.img 3G
 
 qemu-system-x86_64 -cdrom auto.iso -m 1G -drive file=test.img,format=raw -vnc :1
 
-qemu-system-x86_64 -m 1G -drive file=test.img,format=raw -vnc :1
+qemu-system-x86_64 -m 1G -drive file=test.img,format=raw -vnc :1 -net nic,macaddr=52:54:00:12:34:56 -net socket,listen=:1234
 
 ```
 
