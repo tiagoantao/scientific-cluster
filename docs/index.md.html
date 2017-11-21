@@ -24,9 +24,45 @@ Requirements
 - An OS that can run QEMU. This was tested on Linux as a host
   environment.  We suspect that it will almost "out of the box" on a
   Mac and it will need some work on Windows
+- QEMU
 - 12 GB of memory
+- sshpass
+- bash
 - ~30 GB of free disk space
 - root access
+
+Architecture
+============
+
+![Cluster architecture](cluster.png)
+
+Installation
+============
+
+## Creation of a base image
+
+
+### Step 1
+
+The first issue is the creation of a base image that will be used to
+create all other images:
+
+The steps are:
+
+- Download the ISO for Ubuntu Server 16.04
+- Patch the ISO to auto-install
+- Create a virtual disk
+- Run the patched ISO to create the base image
+
+Run the script `create_base_image.sh`. Note that it will create a
+**password-less** VNC interface on *:1 .
+
+This will take a lot of time to run. Connect to the VNC interface as
+soon as it is up to monitor the progress. Kill the script as soon as there
+machine reboots.
+
+### Step 2
+
 
 
 Example configuration
@@ -34,6 +70,14 @@ Example configuration
 
 
 (add bioconda also)
+
+
+FAQ
+===
+
+## Why not Docker?
+
+LUSTRE requires access to block volumes.
 
 Contact
 =======
