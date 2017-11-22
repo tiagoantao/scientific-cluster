@@ -67,7 +67,18 @@ machine reboots, after clicking continue here:
 
 ![Install finish](install_finish.png)
 
+Wait for the machine to reboot and kill QEMU (do not let it boot).
+
+The machine has SSH and the root password is test. We will take care of
+security in step 2.
+
 ### Step 2
+
+Now you have `test.img`. Copy this to `base.img` and `backup.img`.
+The backup image will be useful if you have problems from now on.
+
+The base image will be patched to allow public/private key login instead of
+password.
 
 
 
