@@ -18,6 +18,10 @@ production (to test stuff, document, ...)
 - bash
 - root access
 
+Optional:
+
+- VNC client
+
 # Used components
 
 - A Debian based Linux
