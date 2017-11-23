@@ -74,7 +74,7 @@ security in step 2.
 
 ### Step 2
 
-Now you have `test.img`. Copy this to `base.img` and `backup.img`.
+Now you have `pre-base.img`. Copy this to `base.img` and `backup.img`.
 The backup image will be useful if you have problems from now on.
 
 The base image will be patched to allow public/private key login instead of
@@ -83,7 +83,7 @@ password.
 Start the base image with:
 
 ```bash
-qemu-system-x86_64 -m 1G -drive file=test.img,format=raw -vnc :1 -net nic,macaddr=52:54:00:12:34:56 -net socket,listen=:1234 -net user,hostfwd=tcp:127.0.0.1:22222-:22
+qemu-system-x86_64 -m 1G -drive file=pre-base.img,format=raw -vnc :1 -net nic,macaddr=52:54:00:12:34:56 -net socket,listen=:1234 -net user,hostfwd=tcp:127.0.0.1:22222-:22
 ```
 
 Test the connection with `ssh -p22222 root@localhost`. The password is

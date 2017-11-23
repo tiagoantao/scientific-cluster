@@ -15,7 +15,7 @@ You will need QEMU. On a Debian based distribution you can do:
 ```bash
 
 
-qemu-system-x86_64 -m 1G -drive file=test.img,format=raw -vnc :1 -net nic,macaddr=52:54:00:12:34:56 -net socket,listen=:1234 -net user,hostfwd=tcp:127.0.0.1:22222-:22
+qemu-system-x86_64 -m 1G -drive file=pre-base.img,format=raw -vnc :1 -net nic,macaddr=52:54:00:12:34:56 -net socket,listen=:1234 -net user,hostfwd=tcp:127.0.0.1:22222-:22
 
 ```
 

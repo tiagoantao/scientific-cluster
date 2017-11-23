@@ -30,7 +30,7 @@ cp preseed.cfg iso2/boot
 
 mkisofs -D -r -V cluster -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o ~/auto.iso ~/iso2 
 
-qemu-img create test.img 3G
+qemu-img create pre-base.img 3G
 
-qemu-system-x86_64 -cdrom auto.iso -m 1G -drive file=test.img,format=raw -vnc :1
+qemu-system-x86_64 -cdrom auto.iso -m 1G -drive file=pre-base.img,format=raw -vnc :1
 
