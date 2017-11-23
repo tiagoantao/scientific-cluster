@@ -4,6 +4,51 @@
 
 The beautiful image above needs explanation.
 
+# SLURM setup
+
+Move to base:
+
+```bash
+
+export DEBIAN_FRONTEND=noninteractive
+
+apt-get install -yy bzip2 build-essential less
+
+apt-get install -yy python #slurm
+apt-get install -yy libssl-dev  #munge
+apt-get install -yy slapd #slurm
+apt-get install -yy isc-dhcp-server-ldap
+```
+
+
+
+```bash
+
+wget https://download.schedmd.com/slurm/slurm-17.02.9.tar.bz2
+
+wget https://github.com/dun/munge/archive/munge-0.5.13.tar.gz
+
+tar zxf munge-0.5.13.tar.gz 
+tar jxf slurm-17.02.9.tar.bz2 tar
+
+cd munge-munge-0.5.13
+./configure
+make
+make install
+cd /
+
+rm -rf munge*
+
+
+cd slurm-17.02.9
+./configure
+make
+make install
+cd /
+
+rm -rf slurm*
+
+```
 # Installation
 
 You need network access
