@@ -3,7 +3,7 @@ digraph G {
         style=filled;
         color=lightgrey;
         node [style=filled,color=white];
-        LDAP;
+        LDAP [shape=square];
         DNS;
 	DHCP;
 	DNS -> DHCP;
@@ -11,29 +11,32 @@ digraph G {
     }
 
     subgraph cluster_core {
-        color=lightgrey;
-        node [style=filled];
-        "S head / L client";
-	"NFS export / L client";
-        "S CPU / L master / L client";
-	"S CPU / L object / L client";
-	"S CPU / L client / Standard";
-	"S CPU / L client / High mem";
-	"S CPU / L client / GPU";
-	color=blue;
+        color=grey;
+	style=filled;
+        node [style=filled,shape=square];
+        "S head \n L client";
+	"NFS export \n L client";
+        "S CPU \n L master \n L client";
+        "S CPU \n S master \n L client";
+        "S CPU \n L object \n L client";
+	"S CPU \n L client \n Standard";
+	"S CPU \n L client \n High mem";
+	"S CPU \n L client \n GPU";
         label = "Core";
     }
 
     subgraph cluster_pi {
         color=lightgrey;
-        node [style=filled];
-	"S CPU / L client / PI disk";
-	"S Head / NFS import"
+        node [style=filled,shape=square];
+	"S CPU \n L client \n PI disk";
+	"S Head \n NFS import"
 
         label = "Researcher";
     }
 
 
-   "NFS export / L client" -> "S Head / NFS import";
-   LDAP -> "S Head / NFS import";
+   "NFS export \n L client" -> "S Head \n NFS import";
+   LDAP -> "S Head \n NFS import";
+   "S CPU \n L master \n L client" -> "S CPU \n L client \n PI disk";
+   "S CPU \n L client \n PI disk" -> "S CPU \n L master \n L client";
 }
