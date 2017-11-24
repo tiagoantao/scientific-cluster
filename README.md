@@ -46,3 +46,8 @@ The beautiful image above needs explanation.
 # Why not Docker?
 
 LUSTRE requires access to block volumes.
+
+# Why not KVM (Kernel-based Virtual Machine)?
+
+It should be easy to alter the QEMU commands (`-enable-kvm`) for this.
+But, to ensure compatibility on Windows and Mac, this is not active.
