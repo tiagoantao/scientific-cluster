@@ -6,7 +6,7 @@ The beautiful image above needs explanation.
 
 # SLURM setup
 
-Move to base:
+## Move to base
 
 ```bash
 
@@ -49,6 +49,14 @@ cd /
 rm -rf slurm*
 
 ```
+
+## Copy base to VMs
+
+
+```bash
+cp base.img support.img
+```
+
 # Installation
 
 You need network access
