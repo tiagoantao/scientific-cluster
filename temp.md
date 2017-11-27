@@ -4,6 +4,14 @@
 
 The beautiful image above needs explanation.
 
+# Naming configuration
+
+```bash
+scp -P22222 dhcp.config root@localhost:/etc/dhcp/dhclient-exit-hooks.d/hostname
+scp -P22222 hosts root@localhost:/etc/hosts
+```
+
+
 # SLURM setup
 
 ## Move to base
@@ -16,7 +24,7 @@ apt-get install -yy bzip2 build-essential less
 
 apt-get install -yy python #slurm
 apt-get install -yy libssl-dev  #munge
-apt-get install -yy slapd #slurm
+apt-get install -yy slapd
 apt-get install -yy isc-dhcp-server-ldap
 ```
 
@@ -68,7 +76,7 @@ You will need QEMU. On a Debian based distribution you can do:
 ```bash
 
 
-qemu-system-x86_64 -m 1G -drive file=pre-base.img,format=raw -vnc :1 -net nic,macaddr=52:54:00:12:34:56 -net socket,listen=:1234 -net user,hostfwd=tcp:127.0.0.1:22222-:22
+qemu-system-x86_64 -m 1G -drive file=support.img,format=raw -vnc :1 -net nic,macaddr=52:54:00:12:34:56 -net socket,listen=:1234 -net user,hostfwd=tcp:127.0.0.1:22222-:22,hostname=ldap.cluster
 
 ```
 
