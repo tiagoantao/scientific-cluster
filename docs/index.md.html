@@ -46,10 +46,10 @@ Example Architecture
 
 !!! WARNING
     The current architecture does not follow best practices.
-	As you can see there are cases that have both server and clients
-	of LUSTRE. Users can put jobs on LUSTRE and SLURM master nodes.
-	This is one example of architecture. You can use this framework
-	to test
+    As you can see there are cases that have both server and clients
+    of LUSTRE. Users can put jobs on LUSTRE and SLURM master nodes.
+    This is one example of architecture. You can use this framework
+    to test your architectures.
 
 This will include the following machines (host names given as definition)
 
@@ -70,17 +70,32 @@ files.
 head
 :   User/SLURM Head node with LUSTRE Client
 
-slrm-master
-:   SLURM master with user compute access and LUSTRE client
+slurm-master
+:   SLURM master **and SLURM compute**. LUSTRE client
 
-lustre-master
-:   LUSTRE master ***and client***. User compute access
+lustre-meta
+:   LUSTRE meta master ***and client***. SLURM compute
+
+lustre-object
+:   LUSTRE object master ***and client***. SLURM compute
+
+standard-client
+:   LUSTRE client, SLURM compute
 
 nfs
 :   NFS export with LUSTRE client
 
 ## Researcher
 
+
+pi-head
+:  SLURM head node for the PI. NFS import. LDAP client?
+
+pi-compute
+:  SLURM compute. LUSTRE compute. With prioritizing rule for PI.
+
+!!! Note to self
+    User sync between `pi-head` and cluster to be addressed.
 
 Installation
 =============

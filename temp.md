@@ -4,17 +4,9 @@
 
 The beautiful image above needs explanation.
 
-# Naming configuration
-
-```bash
-scp -P22222 dhcp.config root@localhost:/etc/dhcp/dhclient-exit-hooks.d/hostname
-scp -P22222 hosts root@localhost:/etc/hosts
-```
-
-
 # SLURM setup
 
-## Move to base
+## This is image dependennt
 
 ```bash
 
