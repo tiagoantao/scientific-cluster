@@ -43,10 +43,17 @@ Architecture
 Installation
 ============
 
+!!!
+    All work that you need todo will be preceded box like this. The
+    rest is explanation.
+
+
 ## Creation of a base image
 
 
-### Step 1
+
+
+### Base image creation
 
 The first issue is the creation of a base image that will be used to
 create all other images:
@@ -58,7 +65,12 @@ The steps are:
 - Create a virtual disk
 - Run the patched ISO to create the base image
 
-Run the script `create_base_image.sh`. Note that it will create a
+!!!
+    Run a script and connect to VNC
+
+Run the script `scripts/create_base_image.sh`.
+
+Note that it will create a
 **password-less** VNC interface on *:1 .
 
 This will take a lot of time to run. Connect to the VNC interface as
@@ -72,26 +84,65 @@ Wait for the machine to reboot and kill QEMU (do not let it boot).
 The machine has SSH and the root password is test. We will take care of
 security in step 2.
 
-### Step 2
+### Securing and backing up the base image
 
-Now you have `pre-base.img`. Copy this to `base.img` and `backup.img`.
+Now you have `pre-base.img`.
+
+
+!!!
+    Copy a image file
+
+`cp base.img backup.img`
+
+Copy this to `base.img` and `backup.img`.
 The backup image will be useful if you have problems from now on.
 
 The base image will be patched to allow public/private key login instead of
 password.
 
-Start the base image with:
+!!!
+    Start the base image with
 
 ```bash
-qemu-system-x86_64 -m 1G -drive file=pre-base.img,format=raw -vnc :1 -net nic,macaddr=52:54:00:12:34:56 -net socket,listen=:1234 -net user,hostfwd=tcp:127.0.0.1:22222-:22
+qemu-system-x86_64 -m 1G -drive file=base.img,format=raw -vnc :1 \
+  -net nic,macaddr=52:54:00:12:34:56 -net socket,listen=:1234 \
+  -net user,hostfwd=tcp:127.0.0.1:22222-:22
 ```
 
-Test the connection with `ssh -p22222 root@localhost`. The password is
-test. Note that the VM might take some time to start.
+Monitor by connecting to the VNC interface.
+
+!!!
+    Test the ssh login
+    
+`ssh -p22222 root@localhost`
+
+The password is test. Note that the VM might take some time to start
+(monitor its progress with VNC).
+
+!!!
+    Put you public key in the current directory
+
+This will be `id_rsa.pub` or `id_dsa.pub`.
+
+!!!
+    Upload the public key
 
 Run `scripts/prepare_security.sh`. Give it some time to halt (or check
 on VNC). Shutdown QEMU.
 
+!!! WARNING
+    Security here is nothing special.
+    This is for testing and prototyping configurations, not production
+
+### Basic networking
+
+Here we will configure the base image to accept DHCP hostnames and
+add a `/etc/hosts` file with all host names preloaded.
+
+!!!
+   Run a script
+   
+The script is `scripts/prepare_networking.sh`
 
 Example configuration
 =====================
