@@ -31,17 +31,65 @@ Requirements
 - ~30 GB of free disk space
 - root access
 
-Optional:
+Optional (but strongly recommended):
 
 - VNC client
 
-Architecture
-============
+Example Architecture
+======================
 
 ![Cluster architecture](cluster.png)
 
+!!! Note to self
+    Explain the architecture
+
+
+!!! WARNING
+    The current architecture does not follow best practices.
+	As you can see there are cases that have both server and clients
+	of LUSTRE. Users can put jobs on LUSTRE and SLURM master nodes.
+	This is one example of architecture. You can use this framework
+	to test
+
+This will include the following machines (host names given as definition)
+
+
+
+## General admin
+
+ldap
+:   A support machine with a LDAP server for user account information.
+
+DHCP will be supplied by QEMU as configured by us.
+
+Name resolution will be hard-coded in all machines' `/etc/hosts`
+files.
+
+## Core
+
+head
+:   User/SLURM Head node with LUSTRE Client
+
+slrm-master
+:   SLURM master with user compute access and LUSTRE client
+
+lustre-master
+:   LUSTRE master ***and client***. User compute access
+
+nfs
+:   NFS export with LUSTRE client
+
+## Researcher
+
+
 Installation
-============
+=============
+
+
+!!! WARNING
+    Make sure you read the Architecture section above before
+    proceeding. It includes all the machine names and descriptions
+    that we will be creating.
 
 !!!
     All work that you need todo will be preceded box like this. The
@@ -51,9 +99,7 @@ Installation
 ## Creation of a base image
 
 
-
-
-### Base image creation
+### Basic image initialization
 
 The first issue is the creation of a base image that will be used to
 create all other images:
@@ -116,7 +162,7 @@ Monitor by connecting to the VNC interface.
     
 `ssh -p22222 root@localhost`
 
-The password is test. Note that the VM might take some time to start
+The password is `test`. Note that the VM might take some time to start
 (monitor its progress with VNC).
 
 !!!
@@ -144,11 +190,52 @@ add a `/etc/hosts` file with all host names preloaded.
    
 The script is `scripts/prepare_networking.sh`
 
-Example configuration
-=====================
+!!!
+   Shutdown the machine
+   
+Login as root (port 22222) and halt the machine.
+
+Shutdown QEMU.
+
+### Sanity checking and backup
+
+!!!
+    Start the machine again
+
+```bash
+qemu-system-x86_64 -m 1G -drive file=base.img,format=raw -vnc :1 \
+  -net nic,macaddr=52:54:00:12:34:56 -net socket,listen=:1234 \
+  -net user,hostfwd=tcp:127.0.0.1:22222-:22,hostname=base.cluster
+```
+
+!!!
+    Login and check if all is OK
+
+`ssh -p22222 root@localhost`
+
+- **No password** should be requested
+- On the prompt the machine should be called base
+- `hostname` should return `base.cluster`
+- `cat /etc/hosts | grep 2.15` should report a ldap name
+  The login will report `base` as host
 
 
-(add bioconda also)
+!!!
+    Halt and shutdown
+	
+As with previous shutdown cases, make sure the machine really shuts
+down before killing QEMU.
+
+
+
+## Other stuff
+
+singularity
+
+(add bioconda also?)
+
+Making your configurations
+=============================
 
 
 FAQ
