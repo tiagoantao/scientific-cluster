@@ -110,6 +110,13 @@ Installation
     All work that you need todo will be preceded box like this. The
     rest is explanation.
 
+!!! WARNING
+    Sometimes the VNC interface will be empty. The underlying
+    machine is most probably working.  You only _really_ need the
+    interface to make the base image, but if you want to be sure,
+    restart the machine until you get VNC.
+
+
 
 ## Creation of a base image
 
@@ -129,7 +136,7 @@ The steps are:
 !!!
     Run a script and connect to VNC
 
-Run the script `scripts/create_base_image.sh`.
+`bash scripts/create_base_image.sh`
 
 Note that it will create a
 **password-less** VNC interface on *:1 .
@@ -189,8 +196,9 @@ This will be `id_rsa.pub` or `id_dsa.pub`.
 !!!
     Upload the public key
 
-Run `scripts/prepare_security.sh`. Give it some time to halt (or check
-on VNC). Shutdown QEMU.
+`bash scripts/prepare_security.sh`.
+
+Give it some time to halt (or check on VNC). Shutdown QEMU.
 
 !!! WARNING
     Security here is nothing special.
@@ -201,17 +209,31 @@ on VNC). Shutdown QEMU.
 Here we will configure the base image to accept DHCP hostnames and
 add a `/etc/hosts` file with all host names preloaded.
 
-!!!
-   Run a script
-   
-The script is `scripts/prepare_networking.sh`
+But first we will copy an image that will be the DHCP server
 
 !!!
-   Shutdown the machine
-   
-Login as root (port 22222) and halt the machine.
+    Copy a image for DHCP configuration _later_
 
-Shutdown QEMU.
+`cp base.img dhcp.img`
+
+!!!
+    Start the base image with
+
+```bash
+qemu-system-x86_64 -m 1G -drive file=base.img,format=raw -vnc :1 \
+  -net nic,macaddr=52:54:00:12:34:56 -net socket,listen=:1234 \
+  -net user,hostfwd=tcp:127.0.0.1:22222-:22
+```
+
+Make sure it is up.
+
+!!!
+   Run a script to prepare the networking
+   
+`bash scripts/prepare_networking.sh`
+
+Give it some time to halt (or check on VNC). Shutdown QEMU.
+
 
 ### Sanity checking and backup
 

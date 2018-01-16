@@ -6,4 +6,6 @@ iso/
 iso2/
 pre-base.img
 backup.img
+base.img
 ubuntu*iso
+dhcp.img
