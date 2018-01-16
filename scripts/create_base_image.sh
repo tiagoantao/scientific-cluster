@@ -28,7 +28,7 @@ cp txt.cfg iso2/isolinux/txt.cfg
 cp preseed.cfg iso2/boot
 
 
-mkisofs -D -r -V cluster -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o ~/auto.iso ~/iso2 
+mkisofs -D -r -V cluster -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o auto.iso iso2 
 
 qemu-img create pre-base.img 3G
 
