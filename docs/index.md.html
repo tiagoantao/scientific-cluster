@@ -189,7 +189,7 @@ The password is `test`. Note that the VM might take some time to start
 (monitor its progress with VNC).
 
 !!!
-    Put you public key in the current directory
+    Put your public key in the current directory
 
 This will be `id_rsa.pub` or `id_dsa.pub`.
 
@@ -197,6 +197,8 @@ This will be `id_rsa.pub` or `id_dsa.pub`.
     Upload the public key
 
 `bash scripts/prepare_security.sh`.
+
+You will need tp input the password a couple of times.
 
 Give it some time to halt (or check on VNC). Shutdown QEMU.
 
@@ -265,12 +267,14 @@ As with previous shutdown cases, make sure the machine really shuts
 down before killing QEMU.
 
 
+## Creation of a DHCP and LDAP server
+
 
 ## Other stuff
 
 singularity
 
-(add bioconda also?)
+(add conda also?)
 
 Making your configurations
 =============================
