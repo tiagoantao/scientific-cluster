@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 
 if [ ! -e ubuntu-16.04.3-server-amd64.iso ]
 then
@@ -12,6 +12,7 @@ sudo mount -o loop ./ubuntu-16.04.3-server-amd64.iso iso/
 mkdir iso2
 cp -rT iso iso2
 
+sudo umount iso
 
 chmod u+w iso2/boot/grub
 chmod u+w iso2/boot/grub/grub.cfg
