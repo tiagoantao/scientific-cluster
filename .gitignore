@@ -6,6 +6,7 @@ iso/
 iso2/
 pre-base.img
 backup.img
+backup-ldap.img
 base.img
 ubuntu*iso
 dhcp.img

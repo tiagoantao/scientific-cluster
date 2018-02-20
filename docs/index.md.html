@@ -116,6 +116,8 @@ Installation
     interface to make the base image, but if you want to be sure,
     restart the machine until you get VNC.
 
+!!! WARNING
+    XXX Discuss assumption of DHCP address allocation
 
 
 ## Creation of a base image
@@ -275,6 +277,16 @@ DHCP and LDAP servers will be on the same machine `dhcp.img`
     You might want to backup `dhcp.img`
 
 `cp dhcp.img dhcp-backup.img`
+
+
+!!!
+    Start the DHCP/LDAP machine
+
+```bash
+qemu-system-x86_64 -m 1G -drive file=dhcp.img,format=raw -vnc :1 \
+  -net nic,macaddr=52:54:00:12:34:56 -net socket,listen=:1234  \
+  -net user,hostfwd=tcp:127.0.0.1:22222-:22,hostname=ldap.cluster
+```
 
 
 ## Other stuff
