@@ -208,7 +208,7 @@ Give it some time to halt (or check on VNC). Shutdown QEMU.
     Security here is nothing special.
     This is for testing and prototyping configurations, not production
 
-### Basic networking
+### Basic networking - DHCP clients
 
 Here we will configure the base image to accept DHCP hostnames and
 add a `/etc/hosts` file with all host names preloaded.
@@ -216,9 +216,9 @@ add a `/etc/hosts` file with all host names preloaded.
 But first we will copy an image that will be the DHCP server
 
 !!!
-    Copy a image for DHCP configuration _later_
+    Copy a image for LDAP configuration _later_
 
-`cp base.img dhcp.img`
+`cp base.img ldap.img`
 
 !!!
     Start the base image with
@@ -239,7 +239,27 @@ Make sure it is up.
 Give it some time to halt (or check on VNC). Shutdown QEMU.
 
 
+### Basic networking - LDAP server
+
+There will be a base server that includes:
+
+- LDAP server
+- LDAP web admin
+
+!!!
+    Start the LDAP image with
+
+```bash
+qemu-system-x86_64 -m 1G -drive file=ldap.img,format=raw -vnc :1 \
+  -net nic,macaddr=52:54:00:12:34:56 -net socket,listen=:1234 \
+  -net user,hostfwd=tcp:127.0.0.1:22222-:22
+```
+
+
 ### Sanity checking and backup
+
+!!!
+    Note to self: revisit this. Consider server and base client
 
 !!!
     Start the machine again
