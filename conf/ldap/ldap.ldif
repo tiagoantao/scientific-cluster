@@ -1,0 +1,165 @@
+# Entry 1: dc=cluster
+dn: dc=cluster
+dc: cluster
+o: cluster
+objectclass: top
+objectclass: dcObject
+objectclass: organization
+
+# Entry 2: cn=admin,dc=cluster
+dn: cn=admin,dc=cluster
+cn: admin
+description: LDAP administrator
+objectclass: simpleSecurityObject
+objectclass: organizationalRole
+userpassword: {SSHA}kkhdnmTQIjZbKGF6wdC8K0SSJLUxD83Q
+
+# Entry 3: ou=groups,dc=cluster
+dn: ou=groups,dc=cluster
+objectclass: organizationalUnit
+objectclass: top
+ou: groups
+
+# Entry 4: cn=disk,ou=groups,dc=cluster
+dn: cn=disk,ou=groups,dc=cluster
+cn: disk
+gidnumber: 501
+memberuid: 1001
+objectclass: posixGroup
+objectclass: top
+
+# Entry 5: cn=external_1,ou=groups,dc=cluster
+dn: cn=external_1,ou=groups,dc=cluster
+cn: external_1
+gidnumber: 506
+objectclass: posixGroup
+objectclass: top
+
+# Entry 6: cn=IT,ou=groups,dc=cluster
+dn: cn=IT,ou=groups,dc=cluster
+cn: IT
+gidnumber: 504
+objectclass: posixGroup
+objectclass: top
+
+# Entry 7: cn=supporting,ou=groups,dc=cluster
+dn: cn=supporting,ou=groups,dc=cluster
+cn: supporting
+gidnumber: 500
+memberuid: 1000
+objectclass: posixGroup
+objectclass: top
+
+# Entry 8: ou=departments,ou=groups,dc=cluster
+dn: ou=departments,ou=groups,dc=cluster
+objectclass: organizationalUnit
+objectclass: top
+ou: departments
+
+# Entry 9: ou=biology,ou=departments,ou=groups,dc=cluster
+dn: ou=biology,ou=departments,ou=groups,dc=cluster
+objectclass: organizationalUnit
+objectclass: top
+ou: biology
+
+# Entry 10: cn=jane_pi,ou=biology,ou=departments,ou=groups,dc=cluster
+dn: cn=jane_pi,ou=biology,ou=departments,ou=groups,dc=cluster
+cn: jane_pi
+gidnumber: 503
+objectclass: posixGroup
+objectclass: top
+
+# Entry 11: cn=john_pi,ou=biology,ou=departments,ou=groups,dc=cluster
+dn: cn=john_pi,ou=biology,ou=departments,ou=groups,dc=cluster
+cn: john_pi
+gidnumber: 502
+objectclass: posixGroup
+objectclass: top
+
+# Entry 12: cn=maria_pi,ou=biology,ou=departments,ou=groups,dc=cluster
+dn: cn=maria_pi,ou=biology,ou=departments,ou=groups,dc=cluster
+cn: maria_pi
+gidnumber: 505
+objectclass: posixGroup
+objectclass: top
+
+# Entry 13: ou=users,dc=cluster
+dn: ou=users,dc=cluster
+objectclass: organizationalUnit
+objectclass: top
+ou: users
+
+# Entry 14: cn=Carl Rodriguez,ou=users,dc=cluster
+dn: cn=Carl Rodriguez,ou=users,dc=cluster
+cn: Carl Rodriguez
+gidnumber: 502
+givenname: Carl
+homedirectory: /home/users/crodriguez
+loginshell: /bin/sh
+objectclass: inetOrgPerson
+objectclass: posixAccount
+objectclass: top
+sn: Rodriguez
+uid: crodriguez
+uidnumber: 1001
+userpassword: {MD5}4poeeSkRNzX3RMuvpQSPkg==
+
+# Entry 15: cn=Jim Johnson,ou=users,dc=cluster
+dn: cn=Jim Johnson,ou=users,dc=cluster
+cn: Jim Johnson
+gidnumber: 503
+givenname: Jim
+homedirectory: /home/users/jjohnson
+loginshell: /bin/sh
+objectclass: inetOrgPerson
+objectclass: posixAccount
+objectclass: top
+sn: Johnson
+uid: jjohnson
+uidnumber: 1002
+userpassword: {MD5}wVh/dPqD+MutUwWLDMUg/w==
+
+# Entry 16: cn=Maria Smith,ou=users,dc=cluster
+dn: cn=Maria Smith,ou=users,dc=cluster
+cn: Maria Smith
+gidnumber: 505
+givenname: Maria
+homedirectory: /home/users/msmith
+loginshell: /bin/sh
+objectclass: inetOrgPerson
+objectclass: posixAccount
+objectclass: top
+sn: Smith
+uid: msmith
+uidnumber: 1000
+userpassword: {MD5}FDIJ43L5yXmf42NIzIJP0g==
+
+# Entry 17: cn=Sarah Feathers,ou=users,dc=cluster
+dn: cn=Sarah Feathers,ou=users,dc=cluster
+cn: Sarah Feathers
+gidnumber: 506
+givenname: Sarah
+homedirectory: /home/users/sfeathers
+loginshell: /bin/sh
+objectclass: inetOrgPerson
+objectclass: posixAccount
+objectclass: top
+sn: Feathers
+uid: sfeathers
+uidnumber: 1004
+userpassword: {MD5}lNi+utk0zzcwRi0jHnO4mQ==
+
+# Entry 18: cn=Zed Nachos,ou=users,dc=cluster
+dn: cn=Zed Nachos,ou=users,dc=cluster
+cn: Zed Nachos
+gidnumber: 504
+givenname: Zed
+homedirectory: /home/users/znachos
+loginshell: /bin/sh
+objectclass: inetOrgPerson
+objectclass: posixAccount
+objectclass: top
+sn: Nachos
+uid: znachos
+uidnumber: 1003
+userpassword: {MD5}YmK+uPgcnE7hEptD9iC0dw==
